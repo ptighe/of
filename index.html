@@ -2,11 +2,12 @@
 <html>
 <head>
 <title> This is a Test </title>
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </head>
 
 <body>
 <h1> My Test Page </h1>
-<p> This is a test of the new web page. </p>
+<!-- <p> This is a test of the new web page. </p>
 <ul>
   <li>
     Add to Git </li>
@@ -15,6 +16,33 @@
 </ul>
 </p>
 
+<script type="text/javascript" >
+var body = d3.select("body");
+var p = body.append("p");
+p.text("New paragraph!");
+</script>
+ -->
+<!--
+<script type="text/javascript">
+  var dataset = [ 5, 10, 15, 20, 25 ];
+  d3.select("body").selectAll("p")
+  .data(dataset)
+  .enter()
+  .append("p")
+  .text(function(d) { return d; });
+
+</script>
+ -->
+<script type="text/javascript">
+var data;
+d3.json('
+https://api.fda.gov/drug/event.json?search=patient.drug.openfda.pharm_class_epc:"nonsteroidal+anti-inflammatory+drug"&count=patient.reaction.reactionmeddrapt.exact', function(error, json){
+  if (error) return console.warn(error);
+  data=json;
+});
+
+
+</script>
 </body>
 
 
